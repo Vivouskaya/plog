@@ -5,11 +5,18 @@ get '/' do
 	erb :index
 end
 
-post '/form' do
+post '/' do
 	erb :form
 end
 
+get '/form' do
+	"welcome"
+	params[:name]
+end
 
+post '/form' do
+	params[:message]
+end
 
 
 
