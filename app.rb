@@ -1,5 +1,16 @@
+require 'rubygems'
 require 'sinatra'
 
-get '/about' do
-  erb :about
+get '/' do
+	erb :index
 end
+
+post '/form' do
+	erb :form
+end
+
+
+
+
+
+
