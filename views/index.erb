@@ -1,0 +1,18 @@
+<h1>Liste des Logs</h1>
+<form action="/log" method="post">
+  <textarea name="message"></textarea>
+  <select name="auteur">
+    <option value="aaa">aaa</option>
+    <option value="bbb">bbb</option>
+    <option value="ccc">ccc</option>
+  </select>
+
+  <input type="submit" value="Envoyer">
+</form>
+<ul>
+  <% @sage.each do |post| %>
+  <li><%= post.auteur%>, <%= post.body%>, <%= post.created_at.strftime('%H:%M')%>
+<a href="/delete/<%=post.id%>">Supprimer</a>
+  </li>
+  <%end%>
+</ul>
