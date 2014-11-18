@@ -18,12 +18,8 @@ DataMapper.finalize
 Post.auto_upgrade!
 
 
-get '/about' do
-  erb :about
-end
-
 get '/' do
-  @sage = Post.all 
+  @towel = Post.all(:order => [ :id.desc ], :limit => 20)
   erb :index
 end
 
@@ -40,3 +36,12 @@ get '/delete/:numero' do
   redirect '/'
 end
 
+get '/edit/:numero' do
+  erb :edit
+end
+
+post '/edit/:numero' do
+  @edit = Post.get(params[:numero])
+  @edit.update(body: params[:post][:message])
+  redirect '/'
+end

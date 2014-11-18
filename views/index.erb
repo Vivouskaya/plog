@@ -1,18 +1,39 @@
-<h1>Liste des Logs</h1>
-<form action="/log" method="post">
-  <textarea name="message"></textarea>
-  <select name="auteur">
-    <option value="aaa">aaa</option>
-    <option value="bbb">bbb</option>
-    <option value="ccc">ccc</option>
-  </select>
 
-  <input type="submit" value="Envoyer">
-</form>
-<ul>
-  <% @sage.each do |post| %>
-  <li><%= post.auteur%>, <%= post.body%>, <%= post.created_at.strftime('%H:%M')%>
-<a href="/delete/<%=post.id%>">Supprimer</a>
-  </li>
-  <%end%>
-</ul>
+<div class="titre">
+
+  <h1>Liste des Logs</h1>
+
+</div>
+
+
+<div class="col-xs-8 col-xs-offset-2">
+  <form action="/log" method="post">
+    <div id="new">
+      <p><input type="text" name="auteur" placeholder="Auteur"/></p>
+      <p><textarea id="message" name="message"></textarea><p>
+      <p><input type="submit" value="Envoyer"/><p>
+    </div> <!-- Fin div message -->
+  </form>
+</div> <!-- Fin col-xs-8 -->
+
+<div class="col-xs-8 col-xs-offset-2">
+  
+      <% @towel.each do |post| %>
+        <p>
+  <div id="post">
+        <div id="inner">
+          <p><b><%= post.auteur%></b></p> 
+        </div> <!-- Fin div inner -->
+        <div id="bodypost">
+          <div id="text">
+            <p><%= post.body%></p> 
+          </div> <!-- Fin de div text -->
+          <%= post.created_at.strftime('%H:%M')%> 
+          <%= post.created_at.strftime('%d/%m/%Y')%>
+          <p><a href="/delete/<%=post.id%>">Supprimer</a>  |  <a href="/edit/<%=post.id%>">Editer</a></p>
+        </div> <!-- Fin de div bodypost -->
+  </div> <!-- Fin div post -->
+        </p>
+      <%end%>
+  
+</div> <!-- Fin col-xs-8 -->
