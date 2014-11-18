@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'sinatra'
 require 'data_mapper'
 require 'pry'
@@ -45,3 +46,4 @@ post '/edit/:numero' do
   @edit.update(body: params[:post][:message])
   redirect '/'
 end
+
