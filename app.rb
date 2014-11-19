@@ -29,21 +29,21 @@ post '/log' do
   redirect '/'
 end
 
-get '/delete/:numero' do
-  post = Post.get(params[:numero])
+get '/delete/:id' do
+  post = Post.get(params[:id])
   if post != nil
     post.destroy
   end
   redirect '/'
 end
 
-get '/edit/:numero' do
+post '/edit/:id' do
+  @edit = Post.get(params[:id])
+  #@edit.update(body: params[:post][:body])
   erb :edit
 end
 
-post '/edit/:numero' do
-  @edit = Post.get(params[:numero])
-  @edit.update(body: params[:post][:message])
+post '/update/:id' do
+  Post.get(params[:id]).update(:message => fast_escape_html(params[:message]))
   redirect '/'
 end
-

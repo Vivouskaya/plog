@@ -1,7 +1,7 @@
-<form action="/edit/" method="post">
-    <div id="edit">
+<form action="/edit/<%= @edit.id %>" method="post">
+   
       <p><input type="text" name="auteur" placeholder="Auteur"/></p>
-      <p><textarea id="message" name="message"></textarea><p>
+      <p><textarea id="message" name="post[body]" class="form-control"><%= @edit.body %></textarea><p>
       <p><input type="submit" value="Envoyer"/><p>
-    </div> <!-- Fin div message -->
+    
   </form>
